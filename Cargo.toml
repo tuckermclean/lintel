@@ -1,0 +1,19 @@
+[package]
+name = "lintel"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "A small X11 window manager that floats windows and tiles them where you drop them"
+# protolith is MIT OR Apache-2.0; the Terminus font it carries is OFL-1.1.
+license = "(MIT OR Apache-2.0) AND OFL-1.1"
+publish = false
+
+[dependencies]
+protolith = { path = "../protolith", default-features = false, features = ["x11", "canvas", "font-terminus-12"] }
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
